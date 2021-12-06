@@ -2,7 +2,7 @@ import './style.css';
 
 const todoList = document.querySelector('[data-list]');
 
-let localTodo = [
+const localTodo = [
   {
     description: 'Feed a cat',
     completed: false,
@@ -12,7 +12,7 @@ let localTodo = [
     description: 'Wash the dishes',
     completed: false,
     id: '1',
-  }
+  },
 ];
 
 function render() {
@@ -26,7 +26,7 @@ function render() {
     <i class="fas fa-caret-down"></i>
     `;
     todoList.appendChild(taskElement);
-  })
+  });
 }
 
 render();
