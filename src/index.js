@@ -1,14 +1,32 @@
-import _ from 'lodash';
 import './style.css';
 
-function component() {
-  const element = document.createElement('div');
+const todoList = document.querySelector('[data-list]');
 
-  // Lodash, now imported by this script
-  element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-  element.classList.add('hello');
+const localTodo = [
+  {
+    description: 'Feed a cat',
+    completed: false,
+    id: '2',
+  },
+  {
+    description: 'Wash the dishes',
+    completed: false,
+    id: '1',
+  },
+];
 
-  return element;
+function render() {
+  localTodo.sort((a, b) => a.id - b.id);
+  localTodo.forEach((todo) => {
+    const taskElement = document.createElement('li');
+    taskElement.setAttribute('id', todo.id);
+    taskElement.classList.add('task-description');
+    taskElement.innerHTML = `<input class="to-do-item" type="checkbox">
+    <textarea>${todo.description}</textarea>
+    <i class="fas fa-caret-down"></i>
+    `;
+    todoList.appendChild(taskElement);
+  });
 }
 
-document.body.appendChild(component());
+render();

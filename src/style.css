@@ -1,3 +1,94 @@
-.hello {
-  color: red;
+* {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+.list-container {
+  width: 25%;
+  margin: 1rem auto;
+  border: 1px solid #ddd;
+  box-shadow: 3px 3px 1px #eee;
+}
+
+h1 {
+  text-align: left;
+  font-size: 1rem;
+  font-weight: normal;
+  line-height: 1.5rem;
+  padding: 0.75rem;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  line-height: 1.5rem;
+  padding: 0.85rem;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+form > input {
+  width: 70%;
+}
+
+.add {
+  border: none;
+}
+
+.add::placeholder {
+  font-style: italic;
+}
+
+.fa-plus {
+  padding: 0.1rem 0.5rem;
+  cursor: pointer;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 0.75rem;
+  border-bottom: 1px solid #e5e5e5;
+  gap: 0.5rem;
+}
+
+textarea {
+  width: 90%;
+  border: none;
+  resize: none;
+  font-family: inherit;
+  padding: 1rem 0 0;
+}
+
+input:focus,
+textarea:focus {
+  border: none;
+  outline: none;
+}
+
+.fa-caret-down {
+  width: 1.5rem;
+  height: 1.5rem;
+  cursor: pointer;
+}
+
+.clear {
+  all: unset;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  padding: 1rem 0;
+  color: #a3a3a3;
+  background-color: #f6f6f6;
+  cursor: pointer;
+}
+
+[type=checkbox] {
+  cursor: pointer;
 }
