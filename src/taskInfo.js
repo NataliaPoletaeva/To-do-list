@@ -3,7 +3,6 @@ const taskInput = document.querySelector('[data-task-input]');
 const taskContainer = document.querySelector('[data-todos]');
 const localTaskKey = 'task.list';
 let localTasks = JSON.parse(localStorage.getItem('task.list')) || [];
-let checkBox = document.querySelectorAll('[type=checkbox]');
 
 function clearElement(element) {
     while (element.firstChild) {
@@ -19,13 +18,21 @@ function saveAndRender() {
         const taskElement = document.createElement('li');
         taskElement.id = task.id;
         taskElement.classList.add('task-description');
-        taskElement.innerHTML = `<input class="to-do-item" type="checkbox">
-      <textarea>${task.description}</textarea>
+        taskElement.innerHTML = `<input class="to-do-item" type="checkbox" data-id="${task.id}">
+      <label>${task.description}</label>
       <i class="fas fa-caret-down"></i>
       `;
         taskContainer.appendChild(taskElement);
     });
 }
+
+const checkboxes = document.querySelectorAll('input');
+checkboxes.forEach((checkbox) => {
+    checkbox.addEventListener('change', () => {
+        let checkedTask = localTasks.find((e) => e.id === taskElement.dataset.id);
+        checkedTask.completed = !checkedTask.completed;
+    })
+})
 
 function createTask() {
     return {
@@ -33,13 +40,6 @@ function createTask() {
         description: taskInput.value,
         completed: false,
     };
-}
-
-function confirmCheck() {
-    let checkedTask = localTasks.find(task => {
-        task.id == this.ParentElement.id;
-    })
-    checkedTask.completed = !checkedTask.completed;
 }
 
 function addTask(event) {
@@ -52,4 +52,4 @@ function addTask(event) {
     saveAndRender();
 }
 
-export { taskForm, addTask, saveAndRender, confirmCheck };
+export { taskForm, addTask, saveAndRender };

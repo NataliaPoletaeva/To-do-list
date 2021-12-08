@@ -8,12 +8,3 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 taskForm.addEventListener('submit', addTask);
-
-const boxes = document.querySelectorAll('[type=checkbox]')
-boxes.forEach(box => {
-  box.addEventListener('change', e => {
-    if (e.target.type === "checkbox") {
-      confirmCheck();
-    }
-  })
-})
