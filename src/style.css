@@ -56,14 +56,15 @@ li {
   padding: 0 0.75rem;
   border-bottom: 1px solid #e5e5e5;
   gap: 0.5rem;
-  padding: 0.75rem;
 }
 
-label {
+textarea {
   width: 90%;
   border: none;
   resize: none;
   font-family: inherit;
+  font-size: 1rem;
+  padding: 0.9rem 0 0;
 }
 
 input:focus,

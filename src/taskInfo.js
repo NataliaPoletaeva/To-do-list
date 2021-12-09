@@ -10,29 +10,49 @@ function clearElement(element) {
     }
 }
 
-function saveAndRender() {
+function save() {
     localStorage.setItem(localTaskKey, JSON.stringify(localTasks));
+}
+
+function getFromLocalStorage() {
+    const localTask = localStorage.getItem('localTaskKey');
+    if (localTask) {
+        const data = JSON.parse(localTask);
+        return data;
+    }
+    return [];
+}
+
+function toggle(key) {
+    const localTasks = getFromLocalStorage();
+    localTasks.forEach((task) => {
+        if (task.id === key) {
+            task.completed = !task.completed;
+        }
+    })
+    save(localTasks);
+}
+
+function render() {
     clearElement(taskContainer);
     localTasks.sort((a, b) => a.id - b.id);
     localTasks.forEach((task) => {
+        let checked;
+        if (task.completed === false) {
+            checked = null;
+        } else {
+            checked = 'checked';
+        }
         const taskElement = document.createElement('li');
         taskElement.id = task.id;
         taskElement.classList.add('task-description');
-        taskElement.innerHTML = `<input class="to-do-item" type="checkbox" data-id="${task.id}">
-      <label>${task.description}</label>
+        taskElement.innerHTML = `<input class="to-do-item" type="checkbox" ${checked}>
+      <textarea>${task.description}</textarea>
       <i class="fas fa-caret-down"></i>
       `;
         taskContainer.appendChild(taskElement);
     });
 }
-
-const checkboxes = document.querySelectorAll('input');
-checkboxes.forEach((checkbox) => {
-    checkbox.addEventListener('change', () => {
-        let checkedTask = localTasks.find((e) => e.id === taskElement.dataset.id);
-        checkedTask.completed = !checkedTask.completed;
-    })
-})
 
 function createTask() {
     return {
@@ -49,7 +69,8 @@ function addTask(event) {
     const task = createTask();
     localTasks.push(task);
     taskInput.value = '';
-    saveAndRender();
+    save();
+    render();
 }
 
-export { taskForm, addTask, saveAndRender };
+export { taskForm, addTask, save, render, toggle };
