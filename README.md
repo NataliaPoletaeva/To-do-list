@@ -29,8 +29,9 @@ As for the installation, follow these steps!
 
 - Open the repository
 - Download ZIP-archive to your PC
-- Unpack the archive
-- Open the index.html file
+- Open the archive in your code editor
+- Run "npm install" in the terminal (check if you are in the right folder)
+- Run "npm run build" and then "npm start" in the terminal
 - Use the site!
 
 ## Author
