@@ -14,25 +14,6 @@ function save() {
     localStorage.setItem(localTaskKey, JSON.stringify(localTasks));
 }
 
-function getFromLocalStorage() {
-    const localTask = localStorage.getItem('localTaskKey');
-    if (localTask) {
-        const data = JSON.parse(localTask);
-        return data;
-    }
-    return [];
-}
-
-function toggle(key) {
-    const localTasks = getFromLocalStorage();
-    localTasks.forEach((task) => {
-        if (task.id === key) {
-            task.completed = !task.completed;
-        }
-    })
-    save(localTasks);
-}
-
 function render() {
     clearElement(taskContainer);
     localTasks.sort((a, b) => a.id - b.id);
@@ -46,7 +27,7 @@ function render() {
         const taskElement = document.createElement('li');
         taskElement.id = task.id;
         taskElement.classList.add('task-description');
-        taskElement.innerHTML = `<input class="to-do-item" type="checkbox" ${checked}>
+        taskElement.innerHTML = `<input class="to-do-item" type="checkbox" id="${task.id}" ${checked}>
       <textarea>${task.description}</textarea>
       <i class="fas fa-caret-down"></i>
       `;
@@ -73,4 +54,14 @@ function addTask(event) {
     render();
 }
 
-export { taskForm, addTask, save, render, toggle };
+function check(e) {
+    const checkbox = e.target;
+    if (checkbox.tagName.toLowerCase() === 'input') {
+        const selectedTask = localTasks.find((task) => task.id == checkbox.id);
+        selectedTask.completed = checkbox.checked;
+        save();
+        render();
+    }
+}
+
+export { taskForm, addTask, save, render, check };

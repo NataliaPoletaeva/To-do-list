@@ -1,5 +1,5 @@
 import './style.css';
-import { taskForm, addTask, save, render, toggle } from './taskInfo.js';
+import { taskForm, addTask, save, render, check } from './taskInfo.js';
 
 window.addEventListener('DOMContentLoaded', () => {
   save();
@@ -8,11 +8,5 @@ window.addEventListener('DOMContentLoaded', () => {
 
 taskForm.addEventListener('submit', addTask);
 
-const boxes = document.querySelectorAll('[type=checkbox]');
-boxes.forEach((box) => {
-  box.addEventListener('change', (event) => {
-    if (event.target.type === 'checkbox') {
-      toggle(event.target.parentElement.getAttribute('key'));
-    }
-  });
-})
+const unorderedList = document.querySelector('[data-todos]');
+unorderedList.addEventListener('change', check);
