@@ -1,5 +1,7 @@
 import './style.css';
-import { taskForm, addTask, save, render, check } from './taskInfo.js';
+import {
+  taskForm, addTask, save, render, check,
+} from './taskInfo.js';
 
 window.addEventListener('DOMContentLoaded', () => {
   save();
