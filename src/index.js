@@ -1,32 +1,14 @@
 import './style.css';
+import {
+  taskForm, addTask, save, render, check,
+} from './taskInfo.js';
 
-const todoList = document.querySelector('[data-list]');
+window.addEventListener('DOMContentLoaded', () => {
+  save();
+  render();
+});
 
-const localTodo = [
-  {
-    description: 'Feed a cat',
-    completed: false,
-    id: '2',
-  },
-  {
-    description: 'Wash the dishes',
-    completed: false,
-    id: '1',
-  },
-];
+taskForm.addEventListener('submit', addTask);
 
-function render() {
-  localTodo.sort((a, b) => a.id - b.id);
-  localTodo.forEach((todo) => {
-    const taskElement = document.createElement('li');
-    taskElement.setAttribute('id', todo.id);
-    taskElement.classList.add('task-description');
-    taskElement.innerHTML = `<input class="to-do-item" type="checkbox">
-    <textarea>${todo.description}</textarea>
-    <i class="fas fa-caret-down"></i>
-    `;
-    todoList.appendChild(taskElement);
-  });
-}
-
-render();
+const unorderedList = document.querySelector('[data-todos]');
+unorderedList.addEventListener('change', check);

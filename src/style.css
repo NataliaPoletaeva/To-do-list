@@ -63,7 +63,8 @@ textarea {
   border: none;
   resize: none;
   font-family: inherit;
-  padding: 1rem 0 0;
+  font-size: 1rem;
+  padding: 0.9rem 0 0;
 }
 
 input:focus,
@@ -91,4 +92,8 @@ textarea:focus {
 
 [type=checkbox] {
   cursor: pointer;
+}
+
+.checked {
+  text-decoration: line-through;
 }
