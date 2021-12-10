@@ -1,7 +1,9 @@
 import './style.css';
-import { taskForm, addTask, check } from './taskInfo.js';
+import { save } from './crud.js';
+import render from './render.js';
+import { check, taskForm } from './check.js';
 import clearAll from './clear-all.js';
-import { save, render } from './localStorage.js';
+import addTask from './addTask.js';
 
 window.addEventListener('DOMContentLoaded', () => {
   save();
