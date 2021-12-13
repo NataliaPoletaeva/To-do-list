@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  font-family: 'Open Sans', sans-serif;
 }
 
 ul {
@@ -8,8 +9,8 @@ ul {
 }
 
 .list-container {
-  width: 25%;
-  margin: 1rem auto;
+  width: 50%;
+  margin: 10% auto;
   border: 1px solid #ddd;
   box-shadow: 3px 3px 1px #eee;
 }
@@ -33,11 +34,14 @@ form {
 }
 
 form > input {
-  width: 70%;
+  width: 80%;
+  outline: none;
+  border: none;
 }
 
 .add {
   border: none;
+  font-style: italic;
 }
 
 .add::placeholder {
@@ -62,27 +66,36 @@ textarea {
   width: 90%;
   border: none;
   resize: none;
+  outline: none;
   font-family: inherit;
   font-size: 1rem;
-  padding: 0.9rem 0 0;
+  padding-top: 0.9rem;
 }
 
-input:focus,
-textarea:focus {
-  border: none;
-  outline: none;
-}
-
-.fa-caret-down {
-  width: 1.5rem;
-  height: 1.5rem;
+.material-icons {
+  width: 1rem;
+  height: 1rem;
+  padding-right: 0.5rem;
+  color: #c3c2c4;
   cursor: pointer;
+}
+
+.add-arrow {
+  width: 0.5rem;
+  height: 0.5rem;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
+}
+
+.material-icons:hover {
+  color: #000;
 }
 
 .clear {
   all: unset;
   width: 100%;
   margin: 0 auto;
+  font-weight: lighter;
   text-align: center;
   padding: 1rem 0;
   color: #a3a3a3;
@@ -90,10 +103,11 @@ textarea:focus {
   cursor: pointer;
 }
 
-[type=checkbox] {
-  cursor: pointer;
+.clear:hover {
+  color: #000;
+  text-decoration: underline;
 }
 
-.checked {
-  text-decoration: line-through;
+[type=checkbox] {
+  cursor: pointer;
 }
